@@ -2,8 +2,10 @@ package com.nttdata.bootcamp.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import com.nttdata.bootcamp.models.CustomerPerson;
+import com.nttdata.bootcamp.models.product.ProductPerson;
 import com.nttdata.bootcamp.repositories.ICustomerPersonRepo;
 
 import reactor.core.publisher.Flux;
@@ -15,6 +17,10 @@ public class CustomerPersonImp implements IServiceCustomerPerson {
 	@Autowired
 	private ICustomerPersonRepo personRepo;
 	
+	@Autowired
+	private RestTemplate productPersonRest;
+	
+	
 	@Override
 	public Flux<CustomerPerson> findAll() {
 		return personRepo.findAll();
@@ -22,7 +28,11 @@ public class CustomerPersonImp implements IServiceCustomerPerson {
 
 	@Override
 	public Mono<CustomerPerson> findById(String id) {
-		return personRepo.findById(id);
+		ProductPerson productPerson = productPersonRest.getForObject("http://localhost:8020/product-person/find-by-idCustomerPerson/"+id, ProductPerson.class);
+		return personRepo.findById(id).flatMap(p->{
+			p.setProductPerson(productPerson);
+			return Mono.just(p);
+		});
 	}
 
 	@Override

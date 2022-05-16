@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.nttdata.bootcamp.models.product.ProductEnterprise;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -13,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document( collation = "customer_enterprises")
+@Document(collection = "customer_enterprises")
 @Builder
 public class CustomerEnterprise {
 	@Id

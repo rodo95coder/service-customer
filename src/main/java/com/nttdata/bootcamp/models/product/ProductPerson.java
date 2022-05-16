@@ -1,8 +1,6 @@
-package com.nttdata.bootcamp.models;
+package com.nttdata.bootcamp.models.product;
 
 import java.util.List;
-
-import org.springframework.data.annotation.Id;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

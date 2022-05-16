@@ -1,4 +1,4 @@
-package com.nttdata.bootcamp.models;
+package com.nttdata.bootcamp.models.product;
 
 import java.util.List;
 

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,19 +39,20 @@ public class CustomerEnterpriseController {
 		return enterprise;
 	}
 	
-	@PutMapping("/update/{id}")
-	public Mono<CustomerEnterprise> update(@RequestBody CustomerEnterprise customerEnterprise, @PathVariable String id){
-		return enterpriseRepo.findById(id).flatMap(c->{
+	@PutMapping("/update")
+	public Mono<CustomerEnterprise> update(@RequestBody CustomerEnterprise customerEnterprise){
+		return enterpriseRepo.findById(customerEnterprise.getId()).flatMap(c->{
 			c.setOwnerNames(customerEnterprise.getOwnerNames());
 			c.setAuthorizedSigners(customerEnterprise.getAuthorizedSigners());
 			c.setRucDocument(customerEnterprise.getRucDocument());
 			c.setProductEnterprise(customerEnterprise.getProductEnterprise());
 			log.info("costumer enterprise was updated");
-			return enterpriseRepo.save(customerEnterprise);
+			return enterpriseRepo.save(c);
 		});
 		
 	}
 	
+	@PostMapping("/create")
 	public Mono<CustomerEnterprise> save(@RequestBody CustomerEnterprise customerEnterprise){
 		log.info("costumer enterprise was created");
 		return enterpriseRepo.save(customerEnterprise);

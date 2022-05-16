@@ -1,6 +1,4 @@
-package com.nttdata.bootcamp.models;
-
-import org.springframework.data.annotation.Id;
+package com.nttdata.bootcamp.models.product;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,9 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class BusinessCredit {
-	@Id
-	private String id;
+public class FixedTermAccount {
 	private String accountingBalance;
-	private String availableBalance;
+	private String movementDay;
 }

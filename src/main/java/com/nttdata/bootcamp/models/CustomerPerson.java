@@ -3,6 +3,8 @@ package com.nttdata.bootcamp.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.nttdata.bootcamp.models.product.ProductPerson;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

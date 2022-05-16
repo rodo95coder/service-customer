@@ -1,16 +1,16 @@
 package com.nttdata.bootcamp.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nttdata.bootcamp.models.CustomerEnterprise;
 import com.nttdata.bootcamp.models.CustomerPerson;
-import com.nttdata.bootcamp.services.IServiceCustomerEnterprise;
 import com.nttdata.bootcamp.services.IServiceCustomerPerson;
 
 import lombok.extern.slf4j.Slf4j;
@@ -47,9 +47,23 @@ public class CustomerPersonController {
 			c.setIdDocument(customerPerson.getIdDocument());
 			c.setProductPerson(customerPerson.getProductPerson());
 			log.info("costumer person was updated");
-			return personRepo.save(customerPerson);
+			return personRepo.save(c);
 		});
 		
+	}
+	
+	@PostMapping("/create")
+	public Mono<CustomerPerson> save(@RequestBody CustomerPerson customerPerson){
+		log.info("costumer person was created");
+		return personRepo.save(customerPerson);
+	}
+	
+	@DeleteMapping("/delete/{id}")
+	public Mono<Void> delete(@PathVariable String id){
+		return personRepo.findById(id).flatMap(c->{
+			log.info("costumer person was deleted");
+			return personRepo.delete(c);
+		});
 	}
 
 }
