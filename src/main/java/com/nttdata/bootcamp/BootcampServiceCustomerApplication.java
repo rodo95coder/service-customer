@@ -92,7 +92,7 @@ public class BootcampServiceCustomerApplication implements CommandLineRunner {
 				.productEnterprise(null)
 				.build()).flatMap(z->{
 					return enterpriseRepo.save(z); 
-				}).subscribe(p->log.info("se inserto customerEnterprise: "+ p));
+				}).subscribe(p->log.info("Se inserto customerEnterprise: "+ p));
 		
 	}
 

@@ -18,17 +18,23 @@ public class CustomerPersonImp implements IServiceCustomerPerson {
 	private ICustomerPersonRepo personRepo;
 	
 	@Autowired
-	private RestTemplate productPersonRest;
+	private RestTemplate clientRest;
 	
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public Flux<CustomerPerson> findAll() {
-		return personRepo.findAll();
+		return personRepo.findAll().flatMap(person->{
+			ProductPerson productPerson = clientRest.getForObject("http://localhost:8020/product-person/find-by-idCustomerPerson/"+person.getId(), ProductPerson.class);
+			person.setProductPerson(productPerson);
+			return Flux.just(person);
+		});
 	}
+	
 
 	@Override
 	public Mono<CustomerPerson> findById(String id) {
-		ProductPerson productPerson = productPersonRest.getForObject("http://localhost:8020/product-person/find-by-idCustomerPerson/"+id, ProductPerson.class);
+		ProductPerson productPerson = clientRest.getForObject("http://localhost:8020/product-person/find-by-idCustomerPerson/"+id, ProductPerson.class);
 		return personRepo.findById(id).flatMap(p->{
 			p.setProductPerson(productPerson);
 			return Mono.just(p);

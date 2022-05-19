@@ -35,7 +35,7 @@ public class CustomerPersonController {
 	@GetMapping("/find-by-id/{id}")
 	public Mono<CustomerPerson> findById(@PathVariable String id){
 		Mono<CustomerPerson> person = personRepo.findById(id);
-		log.info("one customer enterprises was consulted by id");
+		log.info("one customer person was consulted by id");
 		return person;
 	}
 	
