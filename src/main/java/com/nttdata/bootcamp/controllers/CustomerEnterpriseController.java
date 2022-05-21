@@ -25,14 +25,14 @@ public class CustomerEnterpriseController {
 	@Autowired
 	private IServiceCustomerEnterprise enterpriseRepo;
 	
-	@GetMapping("/find-all")
+	@GetMapping("/findAll")
 	public Flux<CustomerEnterprise> findAll() {
 		Flux<CustomerEnterprise> enterprises = enterpriseRepo.findAll();
 		log.info("all customer enterprises were consulted");
 		return enterprises;
 	}
 	
-	@GetMapping("/find-by-id/{id}")
+	@GetMapping("/findById/{id}")
 	public Mono<CustomerEnterprise> findById(@PathVariable String id){
 		Mono<CustomerEnterprise> enterprise = enterpriseRepo.findById(id);
 		log.info("one customer enterprises was consulted by id");

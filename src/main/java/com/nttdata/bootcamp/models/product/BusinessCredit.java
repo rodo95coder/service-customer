@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class BusinessCredit {
+	private String id;
+	private String idCustomerEnterprise;
 	private String accountingBalance;
 	private String availableBalance;
 }

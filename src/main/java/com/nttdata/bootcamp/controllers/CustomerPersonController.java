@@ -25,14 +25,14 @@ public class CustomerPersonController {
 	@Autowired
 	private IServiceCustomerPerson personRepo;
 	
-	@GetMapping("/find-all")
+	@GetMapping("/findAll")
 	public Flux<CustomerPerson> findAll() {
 		Flux<CustomerPerson> persons = personRepo.findAll();
 		log.info("all customer persons were consulted");
 		return persons;
 	}
 	
-	@GetMapping("/find-by-id/{id}")
+	@GetMapping("/findById/{id}")
 	public Mono<CustomerPerson> findById(@PathVariable String id){
 		Mono<CustomerPerson> person = personRepo.findById(id);
 		log.info("one customer person was consulted by id");

@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class ProductEnterprise {
+	private String idProductEnterprise;
 	private List<BusinessCredit> businessCredits;
 	private List<CurrentAccount> currentAccounts;
 }

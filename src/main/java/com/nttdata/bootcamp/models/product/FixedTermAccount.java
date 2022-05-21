@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class FixedTermAccount {
+	private String id;
+	private String idCustomerPerson;
 	private String accountingBalance;
 	private String movementDay;
 }
