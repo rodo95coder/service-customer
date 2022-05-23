@@ -8,7 +8,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.nttdata.bootcamp.models.CustomerEnterprise;
 import com.nttdata.bootcamp.models.product.ProductEnterprise;
-import com.nttdata.bootcamp.models.product.ProductPerson;
 import com.nttdata.bootcamp.repositories.ICustomerEnterpriseRepo;
 
 import reactor.core.publisher.Flux;

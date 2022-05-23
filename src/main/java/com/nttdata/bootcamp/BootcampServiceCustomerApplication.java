@@ -15,8 +15,6 @@ import com.nttdata.bootcamp.models.product.BusinessCredit;
 import com.nttdata.bootcamp.models.product.CurrentAccount;
 import com.nttdata.bootcamp.models.product.FixedTermAccount;
 import com.nttdata.bootcamp.models.product.PersonalCredit;
-import com.nttdata.bootcamp.models.product.ProductEnterprise;
-import com.nttdata.bootcamp.models.product.ProductPerson;
 import com.nttdata.bootcamp.models.product.SavingAccount;
 import com.nttdata.bootcamp.repositories.ICustomerEnterpriseRepo;
 import com.nttdata.bootcamp.repositories.ICustomerPersonRepo;
