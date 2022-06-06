@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 public class CurrentAccount {
 	private String id;
 	private String idCustomer;
+	private String typeCustomer;
 	private String accountingBalance;
 	private String maintenance;
+	private String profile;
 }

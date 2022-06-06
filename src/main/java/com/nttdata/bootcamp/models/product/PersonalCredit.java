@@ -14,4 +14,6 @@ public class PersonalCredit {
 	private String idCustomerPerson;
 	private String accountingBalance;
 	private String availableBalance;
+	private String debt;
+	private Long numMovement; 
 }
